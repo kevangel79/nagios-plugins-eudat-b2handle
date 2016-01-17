@@ -39,8 +39,13 @@ if __name__ == '__main__':
 
     try:
 
+        url = param.url
+
+        if (url[-1] != '/'):
+            url = url + '/'
+
         # Credentials __init__ has been modified to accept url,username,password,prefix and dbg as arguments
-        cred = epicclient.Credentials(uri=param.url, username=param.username, password=param.password,
+        cred = epicclient.Credentials(uri=url, username=param.username, password=param.password,
                         prefix=param.prefix, dbg=param.debug)
 
         client = epicclient.EpicClient(cred)
