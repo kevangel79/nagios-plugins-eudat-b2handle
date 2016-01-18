@@ -16,6 +16,7 @@ use Getopt::Long;
 use JSON;
 use Pod::Usage;
 #
+use POSIX;
 
 my $fullargv0 = $0;
 my ($argv0) = $fullargv0 =~ /([^\/\\]+)$/;
@@ -35,6 +36,10 @@ my %settings = (
 	);
 my %data = ();
 
+########################################
+## Child processes 
+########################################
+my @children = ();
 
 ########################################
 ## Main
@@ -68,6 +73,7 @@ sub read_args {
 	my $help='';
 	my $fullhelp='';
 	my $debug='';
+	my $timeout=0;
 
 	#
 	# process the options/arguments
@@ -75,6 +81,7 @@ sub read_args {
 	GetOptions ('debug'			=> \$debug,
 				'help'			=> \$help,
 				'fullhelp'		=> \$fullhelp,
+				'timeout=i'		=> \$timeout,
 				'prefix=s'		=> \$settings_ref->{handle}->{prefix},
 				'suffix=s'		=> \$settings_ref->{handle}->{suffix}
 			   );
@@ -89,6 +96,16 @@ sub read_args {
 		pod2usage(1);
 	}
 
+	if( $timeout > 0 ) { 
+		$SIG{'ALRM'} = sub {
+			kill ('TERM', @children);
+			kill ('KILL', @children);
+			print("Timeout reached, exiting\n");
+			exit(3);
+		};
+		alarm($timeout);
+	}
+
 	return;	 
 }
 
@@ -97,11 +114,11 @@ sub retrievePrefixJsonInfo {
 
 	# Get the subroutine arguments
 	my $settings_ref = shift;
-    my $data_ref = shift;
+	my $data_ref = shift;
 	my $return_code=0;
 
 	my $command = "curl -sSf --header \"application contents:json\" \"$settings_ref->{handle}->{siteinfo2}/$settings_ref->{handle}->{prefix}/servers/\" ";
-	open( my $input_fh, "$command 2>&1 |" ) || die "Can't execute $command: $!";
+	push @children, open( my $input_fh, "$command 2>&1 |" ) || die "Can't execute $command: $!";
 	
 	while ( defined( my $line = <$input_fh> ) ) {
 		chomp $line;
@@ -130,7 +147,7 @@ sub checkPrefixPorts {
 
 	# Get the subroutine arguments
 	my $settings_ref = shift;
-    my $data_ref = shift;
+	my $data_ref = shift;
 	my $return_code=0;
 
 	# loop over the prefixes
@@ -147,7 +164,7 @@ sub checkPrefixHttpPort {
 
 	# Get the subroutine arguments
 	my $settings_ref = shift;
-    my $data_ref = shift;
+	my $data_ref = shift;
 	my $prefix = shift;
 	my $return_code=0;
 	my $http_status="OK";
@@ -167,7 +184,7 @@ sub checkPrefixHttpPort {
 			# check http info
 			my $url="http://${ipAddress}:${ipPort}/${prefix}/${suffix}";
 			my $command = "curl -sSf $url";
-			open( my $input_fh, "$command 2>&1 |" ) || die "Can't execute $command: $!";
+			push @children, open( my $input_fh, "$command 2>&1 |" ) || die "Can't execute $command: $!";
 				
 			while ( defined( my $line = <$input_fh> ) ) {
 				chomp $line;
@@ -193,7 +210,7 @@ sub returnStatus {
 
 	# Get the subroutine arguments
 	my $settings_ref = shift;
-    my $data_ref = shift;
+	my $data_ref = shift;
 	my $status = shift;
 	my $return_code = 0;
 	my $message = '';
@@ -238,7 +255,7 @@ check_handle_resolution.pl
 
 =head1 SYNOPSIS
 
-check_handle_resolution.pl B<--prefix> I<prefix list>  B<--suffix> I<suffix>
+check_handle_resolution.pl B<--prefix> I<prefix list>  B<--suffix> I<suffix> B<--timeout> I<timeout>
 
 check_handle_resolution.pl B<--prefix> I<prefix list>  B<--suffix> I<suffix> --debug
 
@@ -272,6 +289,10 @@ Debug mode. Be verbose in what is being done and what the results of subroutines
 
 Show this help text
 
+=item B<--timeout, -t> I<timeout>
+
+Timeout after I<timeout> seconds
+
 =item B<--prefix, -p> I<prefix list>
 
 Use the supplied prefix instead of 0.NA to check
@@ -279,7 +300,6 @@ Use the supplied prefix instead of 0.NA to check
 =item B<--suffix, -s> I<suffix>
 
 Use the supplied suffix instead of 'EPIC_HEALTHCHECK' to check
-
 
 =back
 
