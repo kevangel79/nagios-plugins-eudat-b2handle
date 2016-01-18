@@ -8,6 +8,8 @@
 # set ts:4
 #
 
+# Kyriakos Gkinis <kyrginis@admin.grnet.gr>, 2016 : add timeout option
+
 #
 use strict;
 use warnings;
@@ -16,7 +18,6 @@ use Getopt::Long;
 use JSON;
 use Pod::Usage;
 #
-use POSIX;
 
 my $fullargv0 = $0;
 my ($argv0) = $fullargv0 =~ /([^\/\\]+)$/;
