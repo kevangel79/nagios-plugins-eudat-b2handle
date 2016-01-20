@@ -25,6 +25,8 @@ Nagios probes to check functionality of Handle service and EPIC API
 %prep
 %setup -q
 
+%define _unpackaged_files_terminate_build 0 
+
 %install
 
 install -d %{buildroot}/%{_libexecdir}/argo-monitoring/probes/%{name}
@@ -33,10 +35,12 @@ install -m 755 check_epic_api.py %{buildroot}/%{_libexecdir}/argo-monitoring/pro
 install -m 644 epicclient.py %{buildroot}%{_libexecdir}/argo-monitoring/probes/%{name}/epicclient.py
 
 %files
+%dir /%{_libexecdir}/argo-monitoring
+%dir /%{_libexecdir}/argo-monitoring/probes/
+%dir /%{_libexecdir}/argo-monitoring/probes/%{name}
+
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/check_handle_resolution.pl
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/check_epic_api.py
-%attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/check_epic_api.pyc
-%attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/check_epic_api.pyo
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/epicclient.py
 %attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/epicclient.pyc
 %attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/epicclient.pyo
