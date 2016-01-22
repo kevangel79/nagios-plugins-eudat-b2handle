@@ -23,7 +23,7 @@ It imports the `epicclient` module.
 
 `--help` : Print a help message and exit
 
-`--timeout <timeout>` : Timeout in seconds
+`--timeout <timeout>` : Timeout, in seconds
 
 ###Example:
 ```
@@ -34,3 +34,26 @@ check_epic_api.py \
 	--username nagios --pass deadbabe --debug
 ```
 
+##check_handle_resolution.pl
+
+This plugin retrieves all the master and mirror handle servers of the specified prefix. It then loops over all IPs to check if the specified suffix is readable.
+
+If no suffix is specified, the default `EPIC_HEALTHCHECK` is checked.
+
+###Options:
+`--debug, -d` : Debug mode
+
+`--help, -h` : Print a help message and exit
+
+`--prefix, -p <prefix>` : The prefix to be tested
+
+`--suffix, -s <suffix>` : The suffix to be tested
+
+`--timeout, -t <timeout>` : Timeout, in seconds
+
+###Examples:
+```
+check_handle_resolution.pl --prefix 12345 --debug
+
+check_handle_resolution.pl --prefix 12345 --sufix MY_HANDLE --debug --timeout 10
+```
