@@ -59,6 +59,37 @@ check_handle_resolution.pl --prefix 12345 --sufix MY_HANDLE --debug --timeout 10
 ```
 
 ##Makefile
-`make srpm` : Builds a Source RPM package compatible with Red Hat Enterprise Linux 6.
+`make srpm` : Builds a source RPM package compatible with Red Hat Enterprise Linux 6.
 
 `make rpm` : Builds a binary RPM package compatible with Red Hat Enterprise Linux 6.
+
+##Dependencies
+
+Dependencies are automatically installed by the rpm package. They are the following:
+
+###check_epic_api.py dependencies
+
+OS repository:
+
+```
+python
+python-argparse
+python-lxml
+python-simplejson
+```
+
+EPEL repository:
+
+```
+python-defusedxml
+python-httplib2
+```
+
+###check_handle_resolution.pl dependencies
+
+OS repository:
+
+```
+perl
+perl-JSON
+```
