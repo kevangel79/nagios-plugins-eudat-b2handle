@@ -65,7 +65,7 @@ check_handle_resolution.pl --prefix 12345 --sufix MY_HANDLE --debug --timeout 10
 
 ##Dependencies
 
-Dependencies are automatically installed by the rpm package. They are the following:
+The following dependencies are automatically installed by rpm :
 
 ###check_epic_api.py dependencies
 
