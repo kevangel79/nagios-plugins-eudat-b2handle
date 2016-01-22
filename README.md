@@ -11,7 +11,7 @@ It imports the `epicclient` module.
 
 `--username <user>` : The username used to authenticate with the EPIC service
 
-`--url <uri>` : The base uri of the EPIC API service to be tested
+`--url <uri>` : The base URI of the EPIC API service to be tested
 
 `--pass <key>` : The API key of the username
 
@@ -55,7 +55,7 @@ If no suffix is specified, the default `EPIC_HEALTHCHECK` is checked.
 ```
 check_handle_resolution.pl --prefix 12345 --debug
 
-check_handle_resolution.pl --prefix 12345 --sufix MY_HANDLE --debug --timeout 10
+check_handle_resolution.pl --prefix 12345 --suffix MY_HANDLE --debug --timeout 10
 ```
 
 ##Makefile
