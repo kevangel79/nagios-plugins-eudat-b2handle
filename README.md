@@ -1,5 +1,5 @@
 # nagios-b2handle-probes
-Two tests are available, `check_epic_api.py` and `check_handle_resolution.pl`
+Two nagios probes are available, `check_epic_api.py` and `check_handle_resolution.pl`.
 
 ##check_epic_api.py
 
@@ -57,3 +57,8 @@ check_handle_resolution.pl --prefix 12345 --debug
 
 check_handle_resolution.pl --prefix 12345 --sufix MY_HANDLE --debug --timeout 10
 ```
+
+##Makefile
+`make srpm` : Builds a Source RPM package compatible with Red Hat Enterprise Linux 6.
+
+`make rpm` : Builds a binary RPM package compatible with Red Hat Enterprise Linux 6.
