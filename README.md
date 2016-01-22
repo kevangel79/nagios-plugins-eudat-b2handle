@@ -26,5 +26,9 @@ It imports the `epicclient` module.
 `--timeout <timeout>` : Timeout in seconds
 
 ###Example:
-`check_epic_api.py --url "https://epic.domain.com/api/v2/handles/" --prefix 12345 --username nagios --pass deadbabe --debug`
+```check_epic_api.py \
+
+--url "https://epic.domain.com/api/v2/handles/" --prefix 12345 \
+
+--username nagios --pass deadbabe --debug```
 
