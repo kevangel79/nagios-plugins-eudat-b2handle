@@ -1,5 +1,5 @@
-Name:		nagios-b2handle-probes
-Version:	0.2
+Name:		nagios-plugins-eudat-b2handle
+Version:	0.3
 Release:	1%{?dist}
 Summary:	Nagios B2HANDLE probes
 License:	GPLv3+
