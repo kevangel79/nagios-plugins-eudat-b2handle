@@ -13,7 +13,8 @@ VALUE_ORIG='http://www.testB2SafeCmd.com/1'
 VALUE_AFTER='http://www.testB2SafeCmd.com/2'
 
 def handler(signum, stack):
-    raise Exception("Timeout reached, exiting.")
+    print "Timeout reached, exiting."
+    sys.exit(3)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='EPIC API create, read, update, delete probe')
