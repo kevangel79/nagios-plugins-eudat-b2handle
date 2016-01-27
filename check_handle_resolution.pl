@@ -32,7 +32,7 @@ my %settings = (
 	'handle' => {
 				'prefix'	=> '0.NA',
 				'siteinfo2'	=> 'http://lab.pidconsortium.eu/siteinfo2',
-				'suffix'	=> 'EPIC_HEALTHCHECK',
+				'suffix'	=> 'EUDAT-B2HANDLE-CHECK',
 				},
 	);
 my %data = ();
@@ -300,7 +300,7 @@ Use the supplied prefix instead of 0.NA to check
 
 =item B<--suffix, -s> I<suffix>
 
-Use the supplied suffix instead of 'EPIC_HEALTHCHECK' to check
+Use the supplied suffix instead of 'EUDAT-B2HANDLE-CHECK' to check
 
 =back
 
