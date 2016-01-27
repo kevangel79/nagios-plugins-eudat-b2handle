@@ -32,7 +32,7 @@ my %settings = (
 	'handle' => {
 				'prefix'	=> '0.NA',
 				'siteinfo2'	=> 'http://lab.pidconsortium.eu/siteinfo2',
-				'suffix'	=> 'EPIC_HEALTHCHECK',
+				'suffix'	=> 'EUDAT-B2HANDLE-CHECK',
 				},
 	);
 my %data = ();
@@ -273,7 +273,7 @@ Please use --fullhelp for explanation of all options
 
 This program can be used to to check the reachability of handle servers.
 
-The procdure works as follows:
+The procedure works as follows:
 	It retrieves all masters and mirrors of a prefix.
 	Than it loops over all ip addresses and ports to check if a predefined handle is readable
 	The status is given back in nagios format
@@ -300,7 +300,7 @@ Use the supplied prefix instead of 0.NA to check
 
 =item B<--suffix, -s> I<suffix>
 
-Use the supplied suffix instead of 'EPIC_HEALTHCHECK' to check
+Use the supplied suffix instead of 'EUDAT-B2HANDLE-CHECK' to check
 
 =back
 

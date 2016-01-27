@@ -1,4 +1,4 @@
-# nagios-b2handle-probes
+# nagios-plugins-eudat-b2handles
 Two nagios probes are available, `check_epic_api.py` and `check_handle_resolution.pl`.
 
 ##check_epic_api.py
@@ -9,21 +9,21 @@ It imports the `epicclient` module.
 
 ###Required options:
 
-`--username <user>` : The username used to authenticate with the EPIC service
+`--username, -U <user>` : The username used to authenticate with the EPIC service
 
-`--url <uri>` : The base URI of the EPIC API service to be tested
+`--url, -u <uri>` : The base URI of the EPIC API service to be tested
 
-`--pass <key>` : The API key of the username
+`--pass, -P <key>` : The API key of the username
 
-`--prefix <prefix>` : The prefix to be tested
+`--prefix, -p <prefix>` : The prefix to be tested
 
 
 ###Optional options
-`--debug` : Debug mode
+`--debug, -d` : Debug mode
 
-`--help` : Print a help message and exit
+`--help, -h` : Print a help message and exit
 
-`--timeout <timeout>` : Timeout, in seconds
+`--timeout, -t <timeout>` : Timeout, in seconds
 
 ###Example:
 ```
@@ -38,7 +38,7 @@ check_epic_api.py \
 
 This plugin retrieves all the master and mirror handle servers of the specified prefix. It then loops over all IPs to check if the specified suffix is readable.
 
-If no suffix is specified, the default `EPIC_HEALTHCHECK` is checked.
+If no suffix is specified, the default `EUDAT-B2HANDLE-CHECK` is checked.
 
 ###Options:
 `--debug, -d` : Debug mode
