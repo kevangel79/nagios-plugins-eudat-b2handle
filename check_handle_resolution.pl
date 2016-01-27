@@ -273,7 +273,7 @@ Please use --fullhelp for explanation of all options
 
 This program can be used to to check the reachability of handle servers.
 
-The procdure works as follows:
+The procedure works as follows:
 	It retrieves all masters and mirrors of a prefix.
 	Than it loops over all ip addresses and ports to check if a predefined handle is readable
 	The status is given back in nagios format

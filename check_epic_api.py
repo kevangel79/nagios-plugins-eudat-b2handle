@@ -18,17 +18,17 @@ def handler(signum, stack):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='EPIC API create, read, update, delete probe')
     req = parser.add_argument_group('required arguments')
-    req.add_argument('--url', action='store', dest='url', required=True,
+    req.add_argument('-u', '--url', action='store', dest='url', required=True,
             help='baseuri of EPIC API to test')
-    req.add_argument('--username', action='store', dest='username', required=True,
+    req.add_argument('-U', '--username', action='store', dest='username', required=True,
             help='EPIC API user')
-    req.add_argument('--pass', action='store', dest='password', required=True,
+    req.add_argument('-P', '--pass', action='store', dest='password', required=True,
             help='EPIC API key')
-    req.add_argument('--prefix', action='store', dest='prefix', required=True,
+    req.add_argument('-p', '--prefix', action='store', dest='prefix', required=True,
             help='prefix to test')
-    req.add_argument('--timeout', action='store', dest='timeout',
+    req.add_argument('-t', '--timeout', action='store', dest='timeout',
             help='timeout')
-    parser.add_argument('--debug', action='store_true', dest='debug',
+    parser.add_argument('-d', '--debug', action='store_true', dest='debug',
             help='debug mode')
 
     param = parser.parse_args()
@@ -57,9 +57,9 @@ if __name__ == '__main__':
             None, TEST_SUFFIX)
 
         if create_result == str(cred.prefix + '/' + TEST_SUFFIX):
-            print "OK: Create handle successful.\n"
+            print "OK: Create handle successful."
         else:
-            print "CRITICAL: Create handle returned unexpected response.\n"
+            print "CRITICAL: Create handle returned unexpected response."
             sys.exit(2)
     
         # Read test
@@ -68,9 +68,9 @@ if __name__ == '__main__':
             cred.prefix, 'URL', TEST_SUFFIX)
   
         if read_value == VALUE_ORIG:
-            print "OK: Read handle successful.\n"
+            print "OK: Read handle successful."
         else:
-            print "CRITICAL: Read handle returned unexpected response.\n"
+            print "CRITICAL: Read handle returned unexpected response."
             client.deleteHandle(cred.prefix, '', TEST_SUFFIX)
             sys.exit(2)
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
             cred.prefix, key, VALUE_AFTER, TEST_SUFFIX)
 
         if not modify_result:
-            print "CRITICAL: Modify handle value returned unexpected response.\n"
+            print "CRITICAL: Modify handle value returned unexpected response."
             client.deleteHandle(cred.prefix, '', TEST_SUFFIX)
             sys.exit(2)
 
@@ -89,11 +89,11 @@ if __name__ == '__main__':
             cred.prefix, key, TEST_SUFFIX)
 
         if get_value_result == VALUE_AFTER:
-            print "OK: Modify handle successful.\n"
+            print "OK: Modify handle successful."
         else:
-            print "CRITICAL: Modify handle value returned unexpected value.\n"
-            print "Expected : " + VALUE_AFTER + "\n"
-            print "Returned : " + get_value_result + "\n"
+            print "CRITICAL: Modify handle value returned unexpected value."
+            print "Expected : " + VALUE_AFTER
+            print "Returned : " + get_value_result
             client.deleteHandle(cred.prefix, '', TEST_SUFFIX)
             sys.exit(2)
 
@@ -102,14 +102,14 @@ if __name__ == '__main__':
         delete_result = client.deleteHandle(cred.prefix, '', TEST_SUFFIX)
 
         if delete_result:
-            print "OK: Delete handle successful.\n"
+            print "OK: Delete handle successful."
             sys.exit(0)
         else:
-            print "CRITICAL: Delete existing handle returned unexpected response.\n"
+            print "CRITICAL: Delete existing handle returned unexpected response."
             sys.exit(2)
 
     except Exception as e:
-        print e + "\n"
+        print e
         sys.exit(3)
     
 
