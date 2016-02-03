@@ -101,7 +101,7 @@ sub read_args {
 		$SIG{'ALRM'} = sub {
 			kill ('TERM', @children);
 			kill ('KILL', @children);
-			print("Timeout reached, exiting\n");
+			print("UNKNOWN: Timeout reached, exiting\n");
 			exit(3);
 		};
 		alarm($timeout);
