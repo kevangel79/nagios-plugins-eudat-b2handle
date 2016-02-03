@@ -9,8 +9,8 @@ import signal
 from time import strftime,gmtime
 
 TEST_SUFFIX='NAGIOS-' +  strftime("%Y%m%d-%H%M%S",gmtime())
-VALUE_ORIG='http://www.testB2SafeCmd.com/1'
-VALUE_AFTER='http://www.testB2SafeCmd.com/2'
+VALUE_ORIG='http://www.' + TEST_SUFFIX + '.com/1'
+VALUE_AFTER='http://www.' + TEST_SUFFIX + '.com/2'
 
 def handler(signum, stack):
     print "UNKNOWN: Timeout reached, exiting."
