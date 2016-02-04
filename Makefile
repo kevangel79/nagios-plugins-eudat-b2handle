@@ -1,4 +1,4 @@
-PKGNAME=nagios-b2handle-probes
+PKGNAME=nagios-plugins-eudat-b2handle
 SPECFILE=${PKGNAME}.spec
 FILES=check_epic_api.py epicclient.py check_handle_resolution.pl ${SPECFILE}
 

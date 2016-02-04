@@ -1,5 +1,5 @@
 Name:		nagios-plugins-eudat-b2handle
-Version:	0.3
+Version:	0.4
 Release:	1%{?dist}
 Summary:	Nagios B2HANDLE probes
 License:	GPLv3+
@@ -46,5 +46,7 @@ install -m 644 epicclient.py %{buildroot}%{_libexecdir}/argo-monitoring/probes/%
 %attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/%{name}/epicclient.pyo
 
 %changelog
+* Wed Feb 3 2016 Christos Kanellopoulos <skanct@gmail.com> - 0.4-1
+- New package version
 * Fri Jan 15 2016 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.1-1
 - Initial version of the package

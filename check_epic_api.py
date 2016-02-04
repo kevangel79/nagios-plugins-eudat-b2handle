@@ -9,11 +9,12 @@ import signal
 from time import strftime,gmtime
 
 TEST_SUFFIX='NAGIOS-' +  strftime("%Y%m%d-%H%M%S",gmtime())
-VALUE_ORIG='http://www.testB2SafeCmd.com/1'
-VALUE_AFTER='http://www.testB2SafeCmd.com/2'
+VALUE_ORIG='http://www.' + TEST_SUFFIX + '.com/1'
+VALUE_AFTER='http://www.' + TEST_SUFFIX + '.com/2'
 
 def handler(signum, stack):
-    raise Exception("Timeout reached, exiting.")
+    print "UNKNOWN: Timeout reached, exiting."
+    sys.exit(3)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='EPIC API create, read, update, delete probe')
@@ -109,7 +110,7 @@ if __name__ == '__main__':
             sys.exit(2)
 
     except Exception as e:
-        print e
+        print "UNKNOWN: " + e
         sys.exit(3)
     
 
