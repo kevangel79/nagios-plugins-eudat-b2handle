@@ -9,21 +9,21 @@ It imports the `epicclient` module.
 
 ###Required options:
 
-`--username <user>` : The username used to authenticate with the EPIC service
+`--username, -U <user>` : The username used to authenticate with the EPIC service
 
-`--url <uri>` : The base URI of the EPIC API service to be tested
+`--url, -u <uri>` : The base URI of the EPIC API service to be tested
 
-`--pass <key>` : The API key of the username
+`--pass, -P <key>` : The API key of the username
 
-`--prefix <prefix>` : The prefix to be tested
+`--prefix, -p <prefix>` : The prefix to be tested
 
 
 ###Optional options
-`--debug` : Debug mode
+`--debug, -d` : Debug mode
 
-`--help` : Print a help message and exit
+`--help, -h` : Print a help message and exit
 
-`--timeout <timeout>` : Timeout, in seconds
+`--timeout, -t <timeout>` : Timeout, in seconds
 
 ###Example:
 ```
