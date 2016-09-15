@@ -26,7 +26,7 @@ Nagios probes to check functionality of Handle service and EPIC API
 %setup -q
 
 %define _unpackaged_files_terminate_build 0 
-%define probe_namespace eu.eudat.b2handle
+%define probe_namespace eudat-b2handle
 
 %install
 
