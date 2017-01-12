@@ -34,9 +34,9 @@ check_epic_api.py \
 	--username nagios --pass deadbabe --debug
 ```
 
-##check_epic_api2.py
+##check_handle_api.py
 
-This plugin is a simple CRUD test of the Handle v.8 JSON REST API service on the specified host and the specified prefix. It creates a handle named NAGIOS-{DATE}-{TIME}, and then tries to read it and update it with a new value, and finally tries to delete it.
+This plugin is a simple CRUD test of the Handle v8 JSON REST API service on the specified host and the specified prefix. It creates a handle named NAGIOS-{DATE}-{TIME}, and then tries to read it and update it with a new value, and finally tries to delete it.
 
 It uses the b2handle library (http://eudat-b2safe.github.io/B2HANDLE/handleclient.html#).
 
@@ -53,7 +53,7 @@ It uses the b2handle library (http://eudat-b2safe.github.io/B2HANDLE/handleclien
 
 ###Example:
 ```
-check_epic_api2.py --file credentials.json
+check_handle_api.py --file credentials.json
 
 ###JSON credentials file example:
 ```
