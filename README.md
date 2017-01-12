@@ -34,6 +34,38 @@ check_epic_api.py \
 	--username nagios --pass deadbabe --debug
 ```
 
+##check_epic_api2.py
+
+This plugin is a simple CRUD test of the Handle v.8 JSON REST API service on the specified host and the specified prefix. It creates a handle named NAGIOS-{DATE}-{TIME}, and then tries to read it and update it with a new value, and finally tries to delete it.
+
+It uses the b2handle library (http://eudat-b2safe.github.io/B2HANDLE/handleclient.html#).
+
+###Required option:
+
+`--file, -f <file>` : The JSON credentials file
+
+###Optional options
+`--debug, -d` : Debug mode
+
+`--help, -h` : Print a help message and exit
+
+`--timeout, -t <timeout>` : Timeout, in seconds
+
+###Example:
+```
+check_epic_api2.py --file credentials.json
+
+###JSON credentials file example:
+```
+{
+  "handle_server_url": "https://hdl.foo.com:8001",
+  "private_key": "/path/to/privkey.pem",
+  "certificate_only": "/path/to/certificate_only.pem",
+  "prefix": "99.99942",
+  "handleowner": "301:99.99942/FOOBAR"
+  "HTTPS_verify": "True"
+}
+
 ##check_handle_resolution.pl
 
 This plugin retrieves all the master and mirror handle servers of the specified prefix. It then loops over all IPs to check if the specified suffix is readable.
