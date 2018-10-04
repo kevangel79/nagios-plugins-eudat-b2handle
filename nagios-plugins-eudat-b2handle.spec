@@ -1,5 +1,5 @@
 Name:		nagios-plugins-eudat-b2handle
-Version:	0.5
+Version:	0.6
 Release:	1%{?dist}
 Summary:	Nagios B2HANDLE probes
 License:	GPLv3+
@@ -40,6 +40,7 @@ install -m 644 check_handle_api.py %{buildroot}%{_libexecdir}/argo-monitoring/pr
 %dir /%{_libexecdir}/argo-monitoring
 %dir /%{_libexecdir}/argo-monitoring/probes/
 %dir /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle
+%dir /%{_sysconfdir}/nagios/plugins/eudat-b2handle
 
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/check_handle_resolution.pl
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/check_epic_api.py
@@ -47,8 +48,11 @@ install -m 644 check_handle_api.py %{buildroot}%{_libexecdir}/argo-monitoring/pr
 %attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/epicclient.pyc
 %attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/epicclient.pyo
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/check_handle_api.py
+%attr(0755,root,root) /%{_sysconfdir}/nagios/plugins/eudat-b2handle
 
 %changelog
+* Thu Oct 4 2018 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.6-1
+- Add configuration directory /etc/nagios/plugins/
 * Thu Jan 12 2017 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.5-1
 - Add check_handle_api.py probe for Handle v8 REST API
 - Change installation directory name to eudat-b2handle
