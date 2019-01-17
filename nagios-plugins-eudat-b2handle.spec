@@ -1,5 +1,5 @@
 Name:		nagios-plugins-eudat-b2handle
-Version:	0.6
+Version:	0.7
 Release:	1%{?dist}
 Summary:	Nagios B2HANDLE probes
 License:	GPLv3+
@@ -51,6 +51,8 @@ install -m 644 check_handle_api.py %{buildroot}%{_libexecdir}/argo-monitoring/pr
 %attr(0755,root,root) /%{_sysconfdir}/nagios/plugins/eudat-b2handle
 
 %changelog
+* Thu Jan 17 2019 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.7-1
+- check_handle_resolution.pl : Updated version that works with HS_SERV values
 * Thu Oct 4 2018 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.6-1
 - Add configuration directory /etc/nagios/plugins/
 * Thu Jan 12 2017 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.5-1
