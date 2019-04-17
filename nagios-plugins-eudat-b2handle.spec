@@ -19,6 +19,8 @@ Requires:	perl-JSON
 Requires:	python-defusedxml
 Requires:	python-httplib2
 
+Requires:	python2-pip
+
 %description
 Nagios probes to check functionality of Handle service and EPIC API
 
@@ -49,6 +51,9 @@ install -m 644 check_handle_api.py %{buildroot}%{_libexecdir}/argo-monitoring/pr
 %attr(0644,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/epicclient.pyo
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes/eudat-b2handle/check_handle_api.py
 %attr(0755,root,root) /%{_sysconfdir}/nagios/plugins/eudat-b2handle
+
+%pre
+pip install b2handle
 
 %changelog
 * Thu Jan 17 2019 Kyriakos Gkinis <kyrginis@admin.grnet.gr> - 0.7-1
