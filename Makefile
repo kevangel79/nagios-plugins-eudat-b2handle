@@ -1,6 +1,6 @@
 PKGNAME=nagios-plugins-eudat-b2handle
 SPECFILE=${PKGNAME}.spec
-FILES=check_epic_api.py epicclient.py check_handle_resolution.pl ${SPECFILE}
+FILES=check_epic_api.py epicclient.py check_handle_resolution.pl check_handle_api.py ${SPECFILE}
 
 PKGVERSION=$(shell grep -s '^Version:' $(SPECFILE) | sed -e 's/Version:\s*//')
 
